@@ -1,10 +1,16 @@
+export type CountryQuery = {
+    country: Country;
+}
+
 export type Country = {
-    name: string;
     capital: string;
-    emoji: string;
     currency: string;
-    languages: {
-        code: string;
-        name: string;
-    }
+    emoji: string;
+    languages: Language[];
+    name: string;
+}
+
+export type Language = {
+    code: string;
+    name: string;
 }
