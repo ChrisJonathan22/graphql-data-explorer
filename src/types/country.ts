@@ -1,5 +1,5 @@
 export type CountryQuery = {
-    country: Country;
+    countries: Country[];
 }
 
 export type Country = {
