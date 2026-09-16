@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client/react";
 import { TRACKS } from "../../graphql/queries/countries";
 import { type CountryQuery } from "../../types/country";
 
 function CountryList(props) {
-  const { loading, error, data } = useQuery<CountryQuery>(TRACKS);
-  const { setCountryData } = props;
+  // const { loading, error, data } = useQuery<CountryQuery>(TRACKS);
+
+  const { setSelectedCountryData, countriesData, loading, error } = props;
 
   return (
     <>
@@ -18,11 +19,11 @@ function CountryList(props) {
         />
       )}
       <ul>
-        {data?.countries.map((country) => {
+        {countriesData?.map((country) => {
           return (
             <li
               key={`${country.name}-${country.languages[0].code}`}
-              onClick={() => setCountryData(country)}
+              onClick={() => setSelectedCountryData(country)}
             >
               {country.name}
             </li>

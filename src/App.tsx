@@ -1,17 +1,12 @@
 import { useState } from "react";
-import SearchBar from "./components/SearchBar/SearchBar";
 import Countries from "./pages/Countries/Countries";
 
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <h1>GraphQL Data Explorer</h1>
-
-      <SearchBar />
       <Countries />
     </>
   );

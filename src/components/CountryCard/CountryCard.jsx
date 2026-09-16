@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function CountryCard(props) {
     const { selectedCountryData } = props;
   
-    console.log(selectedCountryData);
+    console.log("Selected Country Data: ",selectedCountryData);
 
   return (
     <>

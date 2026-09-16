@@ -5,9 +5,10 @@ import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 
 
+// Configure the query with a variable
 export const TRACKS = gql`
-    query {
-    countries(filter: { name : {regex: "United"}}) {
+    query ($searchTerm: String = "Japan") {
+    countries(filter: { name : {regex: $searchTerm}}) {
         name
         capital
         emoji
@@ -20,24 +21,10 @@ export const TRACKS = gql`
 }
 `;
 
-// export const TRACKS = gql`
-//     query {
-//         country(code: "GB") {
-//             name
-//             capital
-//             emoji
-//             currency
-//             languages {
-//             code
-//             name
-//             }
-//         }
-//     }
-// `;
 
-const results = await Client.query({
-    query: TRACKS
-});
+// const results = await Client.query({
+//     query: TRACKS
+// });
 
 
-console.log("GraphQL results from countries.ts", JSON.stringify(results.data));
+// console.log("GraphQL results from countries.ts", JSON.stringify(results.data));
