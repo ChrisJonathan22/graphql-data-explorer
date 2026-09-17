@@ -5,15 +5,19 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useQuery } from "@apollo/client/react";
 import { TRACKS } from "../../graphql/queries/countries";
-import { type CountryQuery } from "../../types/country";
+import { type CountryQuery, type SearchBarProps } from "../../types/country";
 
-function SearchBar(props) {
+function SearchBar(props: SearchBarProps) {
   // On input save search term
-  let [searchTerm, setSearchTerm] = useState("");
+  let [searchTerm, setSearchTerm] = useState("F");
   let [inputValue, setInputValue] = useState("");
 
-  const { setCountriesData, setCountriesLoadingState, setCountriesErrorState } =
-    props;
+  const {
+    setCountriesData,
+    setCountriesLoadingState,
+    setCountriesErrorState,
+    setSelectedCountryData,
+  } = props;
 
   // Run by default
   const { loading, error, data } = useQuery<CountryQuery>(TRACKS, {
@@ -50,7 +54,14 @@ function SearchBar(props) {
             }}
           />
         </Box>
-        <Button variant="contained" onClick={() => setSearchTerm(inputValue)}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setSearchTerm(inputValue);
+            // Clear selected country data when a new search is performed
+            setSelectedCountryData();
+          }}
+        >
           Search
         </Button>
       </Stack>

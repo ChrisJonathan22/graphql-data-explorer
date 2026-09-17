@@ -1,6 +1,6 @@
 // Main countries page
 
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import CountryList from "../../components/CountryList/CountryList";
 import CountryCard from "../../components/CountryCard/CountryCard";
@@ -11,16 +11,14 @@ function Countries() {
   const [loading, setCountriesLoadingState] = useState(false);
   const [error, setCountriesErrorState] = useState(false);
 
-  loading;
-  setCountriesErrorState(error);
   return (
     <>
       <SearchBar
         setCountriesData={setCountriesData}
         setCountriesLoadingState={setCountriesLoadingState}
         setCountriesErrorState={setCountriesErrorState}
+        setSelectedCountryData={setSelectedCountryData}
       />
-      <div>Countries</div>
       <CountryList
         countriesData={countriesData}
         setSelectedCountryData={setSelectedCountryData}
@@ -28,7 +26,10 @@ function Countries() {
         error={error}
       />
       {selectedCountryData && (
-        <CountryCard selectedCountryData={selectedCountryData} />
+        <div>
+          <h3>Country Card</h3>
+          <CountryCard selectedCountryData={selectedCountryData} />
+        </div>
       )}
     </>
   );

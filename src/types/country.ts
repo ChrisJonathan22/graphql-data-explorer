@@ -14,3 +14,14 @@ export type Language = {
     code: string;
     name: string;
 }
+
+export type CountryCardProps = {
+    selectedCountryData: Country;
+}
+
+export type SearchBarProps = {
+    setCountriesData: Function,
+    setCountriesLoadingState: Function,
+    setCountriesErrorState: Function,
+    setSelectedCountryData: Function
+}

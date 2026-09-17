@@ -1,13 +1,13 @@
 // GraphQL queries
 
-import Client from "../client";
+// import Client from "../client";
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
+// import { useQuery } from "@apollo/client/react";
 
 
 // Configure the query with a variable
 export const TRACKS = gql`
-    query ($searchTerm: String = "Japan") {
+    query ($searchTerm: String) {
     countries(filter: { name : {regex: $searchTerm}}) {
         name
         capital
