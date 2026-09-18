@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from "react";
-// import { useQuery } from "@apollo/client/react";
-// import { TRACKS } from "../../graphql/queries/countries";
-// import { type CountryQuery } from "../../types/country";
-
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import { type CountryListProps } from "../../types/country";
 
-function CountryList(props) {
-  // const { loading, error, data } = useQuery<CountryQuery>(TRACKS);
-
-  const { setSelectedCountryData, countriesData, loading, error } = props;
+function CountryList(props: CountryListProps) {
+  const { setSelectedCountryData, countriesData, loading, errorMessage } =
+    props;
 
   return (
     <>
-      <h3>searchResults</h3>
-      {error && <h3>There was an error {error.message} </h3>}
+      <h3>Search Results</h3>
+      {errorMessage && <h3>There was an error {errorMessage} </h3>}
+
       {loading && (
         <img
+          style={{ width: "50%", margin: "0 auto" }}
           alt="Loading gif"
           src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGJsaTBmaWNhNWtlMGd5emVmZmR3bGJqcWZ3bmszeXlndjltajBzaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/17mNCcKU1mJlrbXodo/giphy.gif"
         />
       )}
-      {/* Highlight country on click and display card at the bottom */}
+
       <Stack
         direction="row"
         spacing={2}

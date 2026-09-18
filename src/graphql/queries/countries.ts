@@ -1,8 +1,6 @@
 // GraphQL queries
 
-// import Client from "../client";
 import { gql } from "@apollo/client";
-// import { useQuery } from "@apollo/client/react";
 
 
 // Configure the query with a variable
@@ -20,11 +18,3 @@ export const TRACKS = gql`
     }
 }
 `;
-
-
-// const results = await Client.query({
-//     query: TRACKS
-// });
-
-
-// console.log("GraphQL results from countries.ts", JSON.stringify(results.data));

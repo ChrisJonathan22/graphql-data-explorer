@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -8,9 +8,8 @@ import { TRACKS } from "../../graphql/queries/countries";
 import { type CountryQuery, type SearchBarProps } from "../../types/country";
 
 function SearchBar(props: SearchBarProps) {
-  // On input save search term
-  let [searchTerm, setSearchTerm] = useState("F");
-  let [inputValue, setInputValue] = useState("");
+  const [searchTerm, setSearchTerm] = useState("F");
+  const [inputValue, setInputValue] = useState("");
 
   const {
     setCountriesData,
@@ -19,20 +18,16 @@ function SearchBar(props: SearchBarProps) {
     setSelectedCountryData,
   } = props;
 
-  // Run by default
   const { loading, error, data } = useQuery<CountryQuery>(TRACKS, {
     variables: { searchTerm: searchTerm },
   });
 
   setCountriesData(data?.countries);
   setCountriesLoadingState(loading);
-  setCountriesErrorState(error);
-
-  console.log("Search data: ", data?.countries);
+  setCountriesErrorState(error?.message);
 
   return (
     <>
-      <h3>SearchBar</h3>
       <Stack
         direction="row"
         spacing={2}

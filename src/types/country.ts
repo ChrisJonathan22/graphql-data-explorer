@@ -19,6 +19,13 @@ export type CountryCardProps = {
     selectedCountryData: Country;
 }
 
+export type CountryListProps = {
+    setSelectedCountryData: Function,
+    countriesData: Country[],
+    loading: Boolean,
+    errorMessage: string
+}
+
 export type SearchBarProps = {
     setCountriesData: Function,
     setCountriesLoadingState: Function,
